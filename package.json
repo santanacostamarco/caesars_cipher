@@ -1,0 +1,36 @@
+{
+  "name": "caesars_cipher",
+  "version": "1.0.0",
+  "description": "codenation caesar's cipher challenge",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "start": "node index.js",
+    "tests": "node tests.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/santanacostamarco/caesars_cipher.git"
+  },
+  "keywords": [
+    "cipher",
+    "criptography"
+  ],
+  "author": "Marco Santana",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/santanacostamarco/caesars_cipher/issues"
+  },
+  "homepage": "https://github.com/santanacostamarco/caesars_cipher#readme",
+  "dependencies": {
+    "form-data": "^2.4.0",
+    "fs": "0.0.1-security",
+    "https": "^1.0.0",
+    "prompts": "^2.1.0",
+    "request": "^2.88.0",
+    "sha1": "^1.1.1",
+    "xmlhttprequest": "^1.8.0"
+  }
+}
