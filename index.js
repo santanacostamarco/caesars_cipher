@@ -1,7 +1,6 @@
 const prompt 	= require("prompts");
 const fs 		= require("fs");
 const sha1 		= require("sha1");
-const FormData 	= require("form-data");
 const https 	= require("https");
 const request	= require("request");
 
@@ -29,7 +28,7 @@ const decipher = (str, key) => {
 	return arr.join("");
 };
 
-let postAnswer = () => {
+const postAnswer = () => {
 	let r = request.post({ url: url + "/submit-solution?token=" + input.token }, 
 		(err, httpResponse, body) => {
 			if (err) {
@@ -42,16 +41,7 @@ let postAnswer = () => {
 	form.append('answer', fs.createReadStream('./answer.json'));
 };
 
-(async () => {
-	input = await prompt({
-		type: 'text',
-		name: 'token',
-		message: 'Codenation User Token',
-		validate: (token) => {
-			return token ? true : 'The token is required'
-		}
-	});
-
+const getData = () => {
 	https.get(url + "/generate-data?token=" + input.token, (response) => {
 		response.on('data', (d) => {
 			data = JSON.parse(d.toString("utf8"));
@@ -67,5 +57,18 @@ let postAnswer = () => {
 	}).on('error', (e) => {
 	  	console.log(e);
 	});
+};
+
+(async () => {
+	input = await prompt({
+		type: 'text',
+		name: 'token',
+		message: 'Codenation User Token',
+		validate: (token) => {
+			return token ? true : 'The token is required'
+		}
+	});
+
+	getData();
 
 })();
